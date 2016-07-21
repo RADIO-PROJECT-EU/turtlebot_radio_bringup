@@ -15,8 +15,8 @@
   <!-- start turtlebot ps3joy node -->
   <include file="$(find turtlebot_teleop)/launch/ps3_teleop.launch" />
 
-  <!-- start hokuyo node -->
-  <!--include file="$(find turtlebot_radio_bringup)/launch/hokuyo_laser.launch"/-->
+  <!-- start hokuyo node --> 
+  <include file="$(find turtlebot_radio_bringup)/launch/hokuyo_laser.launch" />
   
   <!-- start usb_cam node -->
   <include if="$(arg rear_cam)" file="$(find turtlebot_radio_bringup)/launch/usb_cam.launch"/>
@@ -26,5 +26,8 @@
 	<arg name="camera" value="radio_cam"/>
 	<arg name="publish_tf" value="false"/>
   </include-->
+
+  <!-- start orbbec -->
+  <include file="$(find turtlebot_radio_bringup)/launch/orbbec_camera.launch"/>
 
 </launch>

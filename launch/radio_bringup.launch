@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
 <launch>
 
-  
+  <!-- NOTE: PLEASE export each of the following arguments in .bashrc file -->
+  <!-- e.g. export TURTLEBOT_REAR_CAM=logitechc90 -->
   <arg name="rear_cam" default="$(env TURTLEBOT_RADIO_REAR_CAM)"/>
+  <arg name="3d_sensor" default="$(env TURTLEBOT_3D_SENSOR)"/>
+  <arg name="lidar" default="$(env TURTLEBOT_LIDAR)"/>
   
   <!-- start robot_state_publisher - publish fixed transforms, load robot model to param server -->
   <!--include file="$(find turtlebot_radio)/launch/turtlebot_radio_xtion.launch"/-->
@@ -10,6 +13,9 @@
   <!-- start summit_xl_controller node -->
   <include file="$(find turtlebot_radio_bringup)/launch/minimal.launch">
   	 <arg name="battery" value="false"/>
+  	 <arg name="rear_cam" value="$(arg rear_cam)"/>
+  	 <arg name="3d_sensor" value="$(arg 3d_sensor)"/>
+  	 <arg name="lidar" value="$(arg lidar)"/>
   </include>
 
   <!-- start turtlebot ps3joy node -->

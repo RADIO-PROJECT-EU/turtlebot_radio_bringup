@@ -12,6 +12,8 @@
     <!-- param name="frame_id" value="/laser"/ -->
     <!-- param name="frame_id" value="/hokuyo_laser"/ -->
     <param name="frame_id" value="/hokuyo_laser_link"/>
+    <param name="angle_min" value="-2.09"/>
+    <param name="angle_max" value="2.09"/>
     <remap from="scan" to="/hokuyo_base/scan" />
 </node> 
   <!-- remember to have a fixed transform from base_link to laser -->

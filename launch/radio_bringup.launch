@@ -6,7 +6,7 @@
   <arg name="rear_cam" default="$(optenv TURTLEBOT_RADIO_REAR_CAM false)"/>
   <arg name="3d_sensor" default="$(optenv TURTLEBOT_3D_SENSOR orbbec)"/>
   <arg name="lidar" default="$(optenv TURTLEBOT_LIDAR ust10lx)"/>
-  
+  <arg name="pad" default="$(optenv TURTLEBOT_PAD logitech)"/>
 
   <!-- start summit_xl_controller node -->
   <include file="$(find turtlebot_radio_bringup)/launch/minimal.launch">
@@ -15,8 +15,8 @@
   	 <arg name="lidar" value="$(arg lidar)"/>
   </include>
 
-  <!-- start turtlebot ps3joy node -->
-  <include file="$(find turtlebot_teleop)/launch/ps3_teleop.launch" />
+  <!-- start turtlebot pad node -->
+  <include file="$(find turtlebot_teleop)/launch/$(arg pad).launch" />
 
   <!-- start 2D--> 
   <include file="$(find turtlebot_radio_bringup)/launch/hokuyo_laser_$(arg lidar).launch" />
@@ -30,5 +30,9 @@
   <!-- start turtlebot emergency -->
   <node name="emergency_stop_button" pkg="turtlebot_radio_emergency" type="turtlebot_emergency_button_node.py" respawn="false" output="screen"/>
 
+  <!-- ar track-->
+  <include file="$(find turtlebot_radio_bringup)/launch/ar_track_rgbd.launch"/>
 
+  <!-- Marker saver -->
+  <node name="marker_mapping_node" pkg="marker_mapping" type="marker_mapping_node.py" respawn="false" output="screen"/>
 </launch>

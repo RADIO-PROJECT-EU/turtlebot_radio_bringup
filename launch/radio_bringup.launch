@@ -35,4 +35,9 @@
 
   <!-- Marker saver -->
   <node name="marker_mapping_node" pkg="marker_mapping" type="marker_mapping_node.py" respawn="false" output="screen"/>
+  
+  <!-- Multimaster -->
+  <include file="$(find turtlebot_radio_bringup)/launch/multimaster.launch"/>
+
+  
 </launch>

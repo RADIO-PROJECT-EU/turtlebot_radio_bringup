@@ -7,6 +7,8 @@
   <arg name="3d_sensor" default="$(optenv TURTLEBOT_3D_SENSOR orbbec)"/>
   <arg name="lidar" default="$(optenv TURTLEBOT_LIDAR ust10lx)"/>
   <arg name="pad" default="$(optenv TURTLEBOT_PAD logitech)"/>
+  <arg name="run_amcl" default="$(optenv TURTLEBOT_RADIO_AMCL_AUTO false)"/>
+  <arg name="map_file" default="$(optenv TURTLEBOT_RADIO_MAP_FILE fphag_map_v1.yaml)"/>
 
   <!-- start summit_xl_controller node -->
   <include file="$(find turtlebot_radio_bringup)/launch/minimal.launch">
@@ -39,5 +41,10 @@
   <!-- Multimaster -->
   <include file="$(find turtlebot_radio_bringup)/launch/multimaster.launch"/>
 
+  <!-- start map server + amcl + move base node -->
+  <include if="$(arg run_amcl)" file="$(find turtlebot_navigation)/launch/amcl_radio.launch">
+	<arg name="map_file" value="$(arg map_file)"/>
+  </include>
+  
   
 </launch>

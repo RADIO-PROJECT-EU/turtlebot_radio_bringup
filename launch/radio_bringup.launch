@@ -27,7 +27,7 @@
   <include if="$(arg rear_cam)" file="$(find turtlebot_radio_bringup)/launch/usb_cam.launch"/>
 
   <!-- start 3D sensor -->
-  <include file="$(find turtlebot_radio_bringup)/launch/$(arg 3d_sensor)_camera.launch"/>
+  <!--include file="$(find turtlebot_radio_bringup)/launch/$(arg 3d_sensor)_camera.launch"/-->
 
   <!-- start turtlebot emergency -->
   <node name="emergency_stop_button" pkg="turtlebot_radio_emergency" type="turtlebot_emergency_button_node.py" respawn="false" output="screen"/>
@@ -36,7 +36,7 @@
   <include file="$(find turtlebot_radio_bringup)/launch/ar_track_rgbd.launch"/>
 
   <!-- Marker saver -->
-  <node name="marker_mapping_node" pkg="marker_mapping" type="marker_mapping_node.py" respawn="false" output="screen"/>
+  <!--node name="marker_mapping_node" pkg="marker_mapping" type="marker_mapping_node.py" respawn="false" output="screen"/-->
   
   <!-- Multimaster -->
   <include file="$(find turtlebot_radio_bringup)/launch/multimaster.launch"/>
@@ -46,6 +46,10 @@
 	<arg name="map_file" value="$(arg map_file)"/>
   </include>
 
+  <!-- node manager -->
   <include file="$(find radio_node_manager)/launch/node_manager.launch"/>  
+  
+  <!-- autodocking -->
+  <include file="$(find kobuki_auto_docking)/launch/minimal.launch"/>
   
 </launch>

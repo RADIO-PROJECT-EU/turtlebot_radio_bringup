@@ -45,6 +45,7 @@
   <include if="$(arg run_amcl)" file="$(find turtlebot_navigation)/launch/amcl_radio.launch">
 	<arg name="map_file" value="$(arg map_file)"/>
   </include>
-  
+
+  <include file="$(find radio_node_manager)/launch/node_manager.launch"/>  
   
 </launch>

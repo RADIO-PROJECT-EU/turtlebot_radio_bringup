@@ -51,5 +51,14 @@
   
   <!-- autodocking -->
   <include file="$(find kobuki_auto_docking)/launch/minimal.launch"/>
+
+  <!-- Human Pattern Recognition -->
+  <include file="$(find human_pattern_recognition)/launch/hpr.launch"/>
+
+  <!-- Motion Analysis -->
+  <include file="$(find motion_analysis)/launch/motion_analysis.launch"/>
+
+  <!-- ROS Visual -->
+  <include file="$(find ros_visual)/launch/ros_visual_classifier.launch"/>
   
 </launch>

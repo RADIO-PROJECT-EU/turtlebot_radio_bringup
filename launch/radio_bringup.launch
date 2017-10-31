@@ -60,5 +60,7 @@
 
   <!-- ROS Visual -->
   <include file="$(find ros_visual)/launch/ros_visual_classifier.launch"/>
+	
+  <include file="$(find radio_ros_connectivity_checker)/launch/ros_connectivity_checker.launch"/>
   
 </launch>
